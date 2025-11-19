@@ -12,7 +12,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-1.png" class="img-fluid w-100 h-100" alt="Kính Lumos Classic">
+                                <img src="assets/img/product-bestseller-1.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Classic">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>
@@ -47,7 +47,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-2.png" class="img-fluid w-100 h-100" alt="Kính Lumos Premium">
+                                <img src="assets/img/product-bestseller-2.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Premium">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>
@@ -82,7 +82,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-3.png" class="img-fluid w-100 h-100" alt="Kính Lumos Vintage">
+                                <img src="assets/img/product-bestseller-3.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Vintage">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>
@@ -117,7 +117,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-4.png" class="img-fluid w-100 h-100" alt="Kính Lumos Modern">
+                                <img src="assets/img/product-bestseller-4.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Modern">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>
@@ -152,7 +152,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-5.png" class="img-fluid w-100 h-100" alt="Kính Lumos Sport">
+                                <img src="assets/img/product-bestseller-5.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Sport">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>
@@ -187,7 +187,7 @@
                     <div class="row g-0">
                         <div class="col-5">
                             <div class="products-mini-img border-end h-100">
-                                <img src="assets/img/kinh-6.png" class="img-fluid w-100 h-100" alt="Kính Lumos Elegant">
+                                <img src="assets/img/product-bestseller-6.jpg" class="img-fluid w-100 h-100" alt="Kính Lumos Elegant">
                                 <div class="products-mini-icon rounded-circle bg-primary">
                                     <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
                                 </div>

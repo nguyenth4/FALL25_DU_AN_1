@@ -39,7 +39,7 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-1.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Classic">
+                                        <img src="assets/img/product-bestseller-1.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Classic">
                                         <div class="product-new">Mới</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
@@ -81,8 +81,8 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-2.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Premium">
-                                        <div class="product-sale">Giảm giá</div>
+                                        <img src="assets/img/product-bestseller-2.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Premium">
+                                        <div class="product-sale">GiảmGiá</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
@@ -123,7 +123,7 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-3.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Vintage">
+                                        <img src="assets/img/product-bestseller-3.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Vintage">
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
@@ -164,7 +164,7 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.7s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-4.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Modern">
+                                        <img src="assets/img/product-bestseller-4.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Modern">
                                         <div class="product-new">Mới</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
@@ -206,8 +206,8 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-5.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Sport">
-                                        <div class="product-sale">Giảm giá</div>
+                                        <img src="assets/img/product-bestseller-5.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Sport">
+                                        <div class="product-sale">GiảmGiá</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
@@ -248,7 +248,7 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-6.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Elegant">
+                                        <img src="assets/img/product-bestseller-6.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Elegant">
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
@@ -289,7 +289,7 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-7.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Blue Light">
+                                        <img src="assets/img/product-bestseller-7.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Blue Light">
                                         <div class="product-new">Mới</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
@@ -331,8 +331,8 @@
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.7s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/kinh-8.png" class="img-fluid w-100 rounded-top" alt="Kính Lumos Kids">
-                                        <div class="product-sale">Giảm giá</div>
+                                        <img src="assets/img/product-bestseller-8.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Kids">
+                                        <div class="product-sale">GiảmGiá</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
