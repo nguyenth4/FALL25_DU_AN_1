@@ -4,7 +4,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="./index.html" class="text-nowrap logo-img">
-                <img src="admin/assets/images/logos/logo.svg" alt="" />
+                <img src="/admin/assets/images/logos/logo.svg" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                 <i class="ti ti-x fs-6"></i>
@@ -95,6 +95,16 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link justify-content-between" href="#">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="round-16 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-circle"></i>
+                                    </div>
+                                    <span class="hide-menu">Đánh giá sản phẩm</span>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
@@ -149,6 +159,59 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Quản lý bài viết -->
+                <li class="sidebar-item">
+                    <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)"
+                        aria-expanded="false">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="d-flex">
+                                <i class="ti ti-basket"></i>
+                            </span>
+                            <span class="hide-menu">Bài viết</span>
+                        </div>
+
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link justify-content-between" href="#">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="round-16 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-circle"></i>
+                                    </div>
+                                    <span class="hide-menu">Danh sách bài viết</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Quản lý khuyến mãi -->
+                <li class="sidebar-item">
+                    <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)"
+                        aria-expanded="false">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="d-flex">
+                                <i class="ti ti-basket"></i>
+                            </span>
+                            <span class="hide-menu">Khuyến mãi</span>
+                        </div>
+
+                    </a>
+                    <ul aria-expanded="false" class="collapse first-level">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link justify-content-between" href="#">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="round-16 d-flex align-items-center justify-content-center">
+                                        <i class="ti ti-circle"></i>
+                                    </div>
+                                    <span class="hide-menu">Danh sách khách hàng</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- End Sidebar navigation -->
