@@ -1,72 +1,61 @@
-<!-- Searvices Start -->
-<div class="container-fluid px-0">
-    <div class="row g-0">
-        <div class="col-6 col-md-4 col-lg-2 border-start border-end wow fadeInUp" data-wow-delay="0.1s">
+<!-- Services Start -->
+<div class="container-fluid px-0 bg-light py-4">
+    <div class="row g-0 text-center">
+
+        <!-- Free Return -->
+        <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.1s">
             <div class="p-4">
-                <div class="d-inline-flex align-items-center">
-                    <i class="fa fa-sync-alt fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Free Return</h6>
-                        <p class="mb-0">30 days money back guarantee!</p>
-                    </div>
-                </div>
+                <i class="fa fa-sync-alt fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Đổi trả miễn phí</h6>
+                <p class="mb-0">Trong 30 ngày nếu không vừa ý</p>
             </div>
         </div>
+
+        <!-- Free Shipping -->
         <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.2s">
             <div class="p-4">
-                <div class="d-flex align-items-center">
-                    <i class="fab fa-telegram-plane fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Free Shipping</h6>
-                        <p class="mb-0">Free shipping on all order</p>
-                    </div>
-                </div>
+                <i class="fas fa-truck fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Miễn phí vận chuyển</h6>
+                <p class="mb-0">Đơn hàng từ 500.000₫ trở lên</p>
             </div>
         </div>
+
+        <!-- Support 24/7 -->
         <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.3s">
             <div class="p-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-life-ring fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Support 24/7</h6>
-                        <p class="mb-0">We support online 24 hrs a day</p>
-                    </div>
-                </div>
+                <i class="fas fa-headset fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Hỗ trợ 24/7</h6>
+                <p class="mb-0">Luôn sẵn sàng tư vấn</p>
             </div>
         </div>
+
+        <!-- Gift Card -->
         <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.4s">
             <div class="p-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-credit-card fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Receive Gift Card</h6>
-                        <p class="mb-0">Recieve gift all over oder $50</p>
-                    </div>
-                </div>
+                <i class="fas fa-gift fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Phiếu quà tặng</h6>
+                <p class="mb-0">Dành cho đơn hàng trên 1 triệu</p>
             </div>
         </div>
+
+        <!-- Secure Payment -->
         <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.5s">
             <div class="p-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-lock fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Secure Payment</h6>
-                        <p class="mb-0">We Value Your Security</p>
-                    </div>
-                </div>
+                <i class="fas fa-lock fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Thanh toán an toàn</h6>
+                <p class="mb-0">Bảo mật thông tin tuyệt đối</p>
             </div>
         </div>
-        <div class="col-6 col-md-4 col-lg-2 border-end wow fadeInUp" data-wow-delay="0.6s">
+
+        <!-- Online Service -->
+        <div class="col-6 col-md-4 col-lg-2 wow fadeInUp" data-wow-delay="0.6s">
             <div class="p-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-blog fa-2x text-primary"></i>
-                    <div class="ms-4">
-                        <h6 class="text-uppercase mb-2">Online Service</h6>
-                        <p class="mb-0">Free return products in 30 days</p>
-                    </div>
-                </div>
+                <i class="fas fa-laptop fa-2x text-primary mb-2"></i>
+                <h6 class="text-uppercase mb-1">Dịch vụ online</h6>
+                <p class="mb-0">Mua sắm & tư vấn trực tuyến</p>
             </div>
         </div>
+
     </div>
 </div>
-<!-- Searvices End -->
+<!-- Services End -->
