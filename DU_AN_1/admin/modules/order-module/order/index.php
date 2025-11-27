@@ -39,13 +39,13 @@
         <tbody class="table-group-divider">
             <tr>
                 <th scope="row">1</th>
-                <td><a href="">Nguyễn Văn A</a></td>
+                <td><a href="/admin/order-detail.php">Nguyễn Văn A</a></td>
                 <td>0123456789</td>
                 <td>123 Đường ABC, Quận 1, TP.HCM</td>
                 <td>Đang xử lý</td>
                 <td>1,000,000 VND</td>
                 <td style="white-space:nowrap">
-                    <button class="btn btn-sm btn-primary">Sửa</button>
+                    <a href="/admin/order-detail.php" class="btn btn-sm btn-primary">Sửa</a>
                 </td>
             </tr>
         </tbody>
