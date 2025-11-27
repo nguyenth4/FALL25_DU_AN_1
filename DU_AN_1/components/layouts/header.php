@@ -11,26 +11,12 @@
 
         <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
             <small class="text-dark">Gọi ngay:</small>
-            <a href="#" class="text-muted">(+84) 0123 456 789</a>
+            <a href="#" class="text-muted">(+84) 0813349216</a>
         </div>
 
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle text-muted me-2" data-bs-toggle="dropdown"><small>VNĐ</small></a>
-                    <div class="dropdown-menu rounded">
-                        <a href="#" class="dropdown-item">VNĐ</a>
-                        <a href="#" class="dropdown-item">USD</a>
-                    </div>
-                </div>
-
-                <div class="dropdown">
-                    <a href="#" class="dropdown-toggle text-muted mx-2" data-bs-toggle="dropdown"><small>Vietnamese</small></a>
-                    <div class="dropdown-menu rounded">
-                        <a href="#" class="dropdown-item">Vietnamese</a>
-                        <a href="#" class="dropdown-item">English</a>
-                    </div>
-                </div>
+                
 
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle text-muted ms-2" data-bs-toggle="dropdown"><small>
