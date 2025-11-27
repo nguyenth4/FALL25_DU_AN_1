@@ -148,12 +148,12 @@
                     </a>
                     <ul aria-expanded="false" class="collapse first-level">
                         <li class="sidebar-item">
-                            <a class="sidebar-link justify-content-between" href="#">
+                            <a class="sidebar-link justify-content-between" href="/admin/order.php">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
                                     </div>
-                                    <span class="hide-menu">Danh sách khách hàng</span>
+                                    <span class="hide-menu">Danh sách đơn hàng</span>
                                 </div>
                             </a>
                         </li>
