@@ -1,7 +1,6 @@
 <?php
-
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'mysql');
 define('DB_NAME', 'fall25_lumos');
-define('DB_PORT', '3306');
+define('DB_PORT', 3306);

@@ -1,4 +1,3 @@
-/**
 <?php
 
 class Product {
@@ -14,5 +13,4 @@ class Product {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }  
-?>
 
