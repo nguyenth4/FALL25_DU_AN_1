@@ -19,24 +19,26 @@ class Product {
     public function getAllProducts($page = 1, $limit = 10, $keyword = '', $active = null, $sortDate = 'desc') {
         $offset = ($page - 1) * $limit;
         $search = '';
-        
-        if($active !== null) {
-            $search .= " WHERE `is_active` = :active ";
-        }
 
-        if($keyword !== '') {
-            $search = "WHERE `title` LIKE %$keyword% OR `description` LIKE %$keyword% OR `category` LIKE %$keyword%";
+        if(trim($keyword !== '')) {
+            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%' OR `category` LIKE '%$keyword%'";
         } else {
-            $search = '';
+            $search = 'WHERE 1';
         }
 
+        if($active !== null) {
+            $search .= " AND `is_active` = :active ";
+        }
+ 
         if($sortDate === 'asc' || $sortDate === 'desc') {
             $search .= " ORDER BY `created_at` $sortDate ";
         }
 
         $query = "SELECT * FROM `products` $search LIMIT :limit OFFSET :offset";
-        $stmt = $this->connection->prepare($query); 
-        $stmt->bindValue('"active', $active, PDO::PARAM_INT);
+        $stmt = $this->connection->prepare($query);
+        if($active !== null) {
+            $stmt->bindValue(':active', $active, PDO::PARAM_INT);
+        }
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
