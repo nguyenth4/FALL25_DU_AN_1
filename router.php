@@ -20,3 +20,12 @@ $cartModels = new Cart($connection);
 // echo "<pre>";
 // var_dump($cartList);
 // echo "</pre>";
+
+require_once 'Models/User.php';
+$userModels = new User($connection);
+// $userList = $userModels->getAllUsers(1, 15, '', 1, 'desc');
+// var_dump($userList);
+// $user = $userModels->getOneUsers(2);
+// echo "<pre>";
+// var_dump($user);
+// echo "</pre>";
