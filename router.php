@@ -33,8 +33,17 @@ $userModels = new User($connection);
 
 require_once 'Models/Category.php';
 $categoryModels = new Category($connection);
-$categoryList = $categoryModels->getAllCategories(1, 15, '', 1, 'desc');
-$category = $categoryModels->getOneCategory(2);
+// $categoryList = $categoryModels->getAllCategories(1, 15, '', 1, 'desc');
+// $category = $categoryModels->getOneCategory(2);
+// echo "<pre>";
+// var_dump($category);
+// echo "</pre>";
+
+require_once 'Models/Order.php';
+$orderModels = new Order($connection);
+$orderList = $orderModels->getAllOrders(1, 15, '', 1, 'desc');
+var_dump($orderList);
+$order = $orderModels->getOneOrder(2);
 echo "<pre>";
-var_dump($category);
+var_dump($order);
 echo "</pre>";
