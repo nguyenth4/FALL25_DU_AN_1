@@ -27,7 +27,7 @@ class User {
         }
 
         if($active !== null) {
-            $search .= " AND `is_active` = :active ";
+            $search .= " AND `status` = :active ";
         }
  
         if($sortDate === 'asc' || $sortDate === 'desc') {

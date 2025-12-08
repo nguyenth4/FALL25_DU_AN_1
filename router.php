@@ -29,3 +29,12 @@ $userModels = new User($connection);
 // echo "<pre>";
 // var_dump($user);
 // echo "</pre>";
+
+
+require_once 'Models/Category.php';
+$categoryModels = new Category($connection);
+$categoryList = $categoryModels->getAllCategories(1, 15, '', 1, 'desc');
+$category = $categoryModels->getOneCategory(2);
+echo "<pre>";
+var_dump($category);
+echo "</pre>";
