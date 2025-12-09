@@ -34,10 +34,9 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Ảnh</th>
-                    <th scope="col" style="width: 30%;">Tên sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Giá</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Slug</th>
+                    <th scope="col">Giá khuyến mãi</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col" class="text-end">Hành động</th>
                 </tr>
@@ -59,13 +58,10 @@
                         <td> <?= $product['title'] ?> </td>
 
                         <!-- Giá -->
-                        <td> <?= $product['price'] ?> </td>
+                        <td> <?= number_format($product['price']) ?> VND</td>
 
-                        <!-- Brand -->
-                        <td> <?= $product['brand'] ?> </td>
-
-                        <!-- Slug -->
-                        <td> <?= $product['slug'] ?> </td>
+                        <!-- Giá khuyến mãi -->
+                        <td> <?= $product['sale_price'] ? number_format($product['sale_price']) . ' VND' : 'Không có khuyến mãi' ?> </td>
 
                         <!-- Trạng thái -->
                         <td>

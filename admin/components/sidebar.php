@@ -3,7 +3,7 @@
     <!-- Sidebar scroll-->
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-            <a href="./index.html" class="text-nowrap logo-img">
+            <a href="/admin" class="text-nowrap logo-img">
                 <img src="/admin/assets/images/logos/logo.svg" alt="" />
             </a>
             <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -45,7 +45,7 @@
                 </li>
                 <!-- Quản lý sản phẩm -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)"
+                    <a class="sidebar-link justify-content-between has-arrow <?php isset($_GET['module']) && $_GET['module'] == 'products' ? 'active' : '' ?>" href="javascript:void(0)"
                         aria-expanded="false">
                         <div class="d-flex align-items-center gap-3">
                             <span class="d-flex">
@@ -54,7 +54,7 @@
                             <span class="hide-menu">Sản phẩm</span>
                         </div>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level">
+                    <ul aria-expanded="false" class="collapse first-level <?php isset($_GET['module']) && $_GET['module'] == 'products' ? 'in' : '' ?>">
                         <li class="sidebar-item">
                             <a class="sidebar-link justify-content-between" href="#">
                                 <div class="d-flex align-items-center gap-3">
