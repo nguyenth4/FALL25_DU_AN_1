@@ -19,7 +19,8 @@
             <form action="">
                 <div class="col-md-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm theo tên, brand, slug...">
+                        <input type="text" class="form-control"
+                            placeholder="Tìm kiếm sản phẩm theo tên, brand, slug...">
                         <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                     </div>
                 </div>
@@ -32,8 +33,8 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col" style="width: 30%;">Tên sản phẩm</th>
                     <th scope="col">Ảnh</th>
+                    <th scope="col" style="width: 30%;">Tên sản phẩm</th>
                     <th scope="col">Giá</th>
                     <th scope="col">Brand</th>
                     <th scope="col">Slug</th>
@@ -43,41 +44,43 @@
             </thead>
 
             <tbody class="table-group-divider">
-                <tr>
-                    <th scope="row">1</th>
+                <?php foreach ($productList as $product):
+                    ?>
+                    <tr>
+                        <th scope="row"><?= $product['product_id'] ?></th>
 
-                    <!-- Tên sản phẩm -->
-                    <td>Kính mắt thời trang nam nữ</td>
+                        <!-- Ảnh sản phẩm -->
+                        <td>
+                            <img src="uploads/glasses.jpg" alt="Kính mắt" class="img-thumbnail"
+                                style="width: 60px; height: 40px; object-fit: cover;">
+                        </td>
 
-                    <!-- Ảnh sản phẩm -->
-                    <td>
-                        <img src="uploads/glasses.jpg" alt="Kính mắt" class="img-thumbnail" style="width: 60px; height: 40px; object-fit: cover;">
-                    </td>
+                        <!-- Tên sản phẩm -->
+                        <td> <?= $product['title'] ?> </td>
 
-                    <!-- Giá -->
-                    <td>450,000đ</td>
+                        <!-- Giá -->
+                        <td> <?= $product['price'] ?> </td>
 
-                    <!-- Brand -->
-                    <td>Ray-Ban</td>
+                        <!-- Brand -->
+                        <td> <?= $product['brand'] ?> </td>
 
-                    <!-- Slug -->
-                    <td>kinh-mat-thoi-trang</td>
+                        <!-- Slug -->
+                        <td> <?= $product['slug'] ?> </td>
 
-                    <!-- Trạng thái -->
-                    <td>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" checked>
-                        </div>
-                    </td>
+                        <!-- Trạng thái -->
+                        <td>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" <?php echo $product['is_active'] ? 'checked' : '' ?>>
+                            </div>
+                        </td>
 
-                    <!-- Nút Sửa / Xóa -->
-                    <td>
-                        <a href="">
-                            <button type="button" class="btn btn-outline-primary">Sửa</button>
-                        </a>
-                        <button type="button" class="btn btn-outline-danger">Xóa</button>
-                    </td>
-                </tr>
+                        <!-- Nút Sửa / Xóa -->
+                        <td style="white-space:nowrap">
+                            <a href="?id=<?= $product['product_id'] ?>" class="btn btn-outline-primary">Sửa</a>
+                            <a href="?id=<?= $product['product_id'] ?>" class="btn btn-outline-danger">Xóa</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
 
         </table>

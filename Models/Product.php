@@ -16,7 +16,7 @@ class Product {
      * @return array Danh sách sản phẩm
      */
 
-    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $active = null, $sortDate = 'desc') {
+    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null) {
         $offset = ($page - 1) * $limit;
         $search = '';
 
