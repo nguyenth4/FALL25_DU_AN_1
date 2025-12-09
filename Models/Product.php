@@ -1,12 +1,15 @@
 <?php
 
-class Product {
+class Product
+{
     private $connection;
-    public function __construct($connection) {
+    public function __construct($connection)
+    {
         $this->connection = $connection;
     }
-    
-    public function countProduct() {
+
+    public function countProduct()
+    {
         $query = "SELECT COUNT(*) as total FROM `products`";
         $stmt = $this->connection->prepare($query);
         $stmt->execute();
@@ -21,32 +24,35 @@ class Product {
      * @param string $keyword Từ khóa tìm kiếm
      * @param int|null $active Trạng thái kích hoạt của sản phẩm
      * @param string $sortDate Sắp xếp theo ngày 'asc' hoặc 'desc'
+     *  
      * @return array Danh sách sản phẩm
      */
 
-    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null) {
-        
+    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null)
+    {
+
         $result = [];
         $offset = ($page - 1) * $limit;
         $search = '';
 
-        if(trim($keyword !== '')) {
-            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%' OR `category` LIKE '%$keyword%'";
+        if (trim($keyword !== '')) {
+            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%' OR `category_id` LIKE '%$keyword%'";
         } else {
             $search = 'WHERE 1';
         }
 
-        if($active !== null) {
+        if ($active !== null) {
             $search .= " AND `is_active` = :active ";
         }
- 
-        if($sortDate === 'asc' || $sortDate === 'desc') {
+
+        if ($sortDate === 'asc' || $sortDate === 'desc') {
             $search .= " ORDER BY `created_at` $sortDate ";
         }
 
         $query = "SELECT * FROM `products` $search LIMIT :limit OFFSET :offset";
+
         $stmt = $this->connection->prepare($query);
-        if($active !== null) {
+        if ($active !== null) {
             $stmt->bindValue(':active', $active, PDO::PARAM_INT);
         }
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -67,20 +73,21 @@ class Product {
      * @return array Thông tin sản phẩm
      */
 
-    public function getOneProduct($id, $active = null) {
-        if($active !== null) {
+    public function getOneProduct($id, $active = null)
+    {
+        if ($active !== null) {
             $search = " AND `is_active` = :active ";
         } else {
             $search = '';
         }
         $query = "SELECT * FROM `products` WHERE `product_id` = :id LIMIT 1";
-        $stmt = $this->connection->prepare($query); 
+        $stmt = $this->connection->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        if($active !== null) {
+        if ($active !== null) {
             $stmt->bindValue(':active', $active, PDO::PARAM_INT);
         }
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-}  
+}
 
