@@ -17,7 +17,8 @@ class ProductController
 
     public function index()
     {
-        $productList = $this->productModel->getAllProducts(1, 10, '', 'desc');
+        $page = isset($_GET['page']) ? (int)$_GET['page'] :1;
+        $productList = $this->productModel->getAllProducts($page, 10, '', 'desc');
         require_once "admin/product.php";
     }
 

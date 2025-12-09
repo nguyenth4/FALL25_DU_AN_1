@@ -43,7 +43,7 @@
             </thead>
 
             <tbody class="table-group-divider">
-                <?php foreach ($productList as $product):
+                <?php foreach ($productList['data'] as $product):
                     ?>
                     <tr>
                         <th scope="row"><?= $product['product_id'] ?></th>
@@ -61,7 +61,8 @@
                         <td> <?= number_format($product['price']) ?> VND</td>
 
                         <!-- Giá khuyến mãi -->
-                        <td> <?= $product['sale_price'] ? number_format($product['sale_price']) . ' VND' : 'Không có khuyến mãi' ?> </td>
+                        <td> <?= $product['sale_price'] ? number_format($product['sale_price']) . ' VND' : 'Không có khuyến mãi' ?>
+                        </td>
 
                         <!-- Trạng thái -->
                         <td>
@@ -84,12 +85,18 @@
 
     <div class="card-footer">
         <nav aria-label="Page navigation example">
+            <?php
+            $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+            $limit = 10;
+            $totalPages = ceil($productList['total'] / $limit);
+            ?>
+
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?role=admin&module=products&page=1">Trang đầu</a></li>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item"><a class="page-link" href="?role=admin&module=products&page=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor; ?>
+                <li class="page-item"><a class="page-link" href="?role=admin&module=products&page=<?= $totalPages ?>">Trang cuối</a></li>
             </ul>
         </nav>
     </div>

@@ -6,6 +6,14 @@ class Product {
         $this->connection = $connection;
     }
     
+    public function countProduct() {
+        $query = "SELECT COUNT(*) as total FROM `products`";
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
     /**
      * Hàm lấy danh sách sản phẩm với phân trang và tìm kiếm
      * @param int $page Trang hiện tại
@@ -17,6 +25,8 @@ class Product {
      */
 
     public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null) {
+        
+        $result = [];
         $offset = ($page - 1) * $limit;
         $search = '';
 
@@ -42,7 +52,11 @@ class Product {
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $result['total'] = $this->countProduct();
+        $result['data'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
     /**
