@@ -28,7 +28,7 @@ class Database
         try {
             $this->connection = new PDO("mysql:host=$this->db_host;port=$this->db_port;dbname=$this->db_name", $this->db_user, $this->db_pass);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Kết nối DB thành công";
+            // echo "Kết nối DB thành công";
             return $this->connection;
         } catch (Exception $e) {
             echo "Kết nối không thành công: " . $e->getMessage() . " ở file:" . $e->getLine() . " tại dòng:" . $e->getFile();

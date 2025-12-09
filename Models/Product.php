@@ -23,12 +23,13 @@ class Product
      * @param int $limit Số sản phẩm trên mỗi trang
      * @param string $keyword Từ khóa tìm kiếm
      * @param int|null $active Trạng thái kích hoạt của sản phẩm
+     * @param int|null $category_id Lọc theo danh mục sản phẩm
      * @param string $sortDate Sắp xếp theo ngày 'asc' hoặc 'desc'
      *  
      * @return array Danh sách sản phẩm
      */
 
-    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null)
+    public function getAllProducts($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $category_id = null, $active = null)
     {
 
         $result = [];
@@ -36,9 +37,13 @@ class Product
         $search = '';
 
         if (trim($keyword !== '')) {
-            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%' OR `category_id` LIKE '%$keyword%'";
+            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%'";
         } else {
             $search = 'WHERE 1';
+        }
+
+        if ($category_id !== null) {
+            $search .= " AND `products`.`category_id` = :category_id ";
         }
 
         if ($active !== null) {
@@ -46,14 +51,15 @@ class Product
         }
 
         if ($sortDate === 'asc' || $sortDate === 'desc') {
-            $search .= " ORDER BY `created_at` $sortDate ";
+            $search .= " ORDER BY `products`.`created_at` $sortDate ";
         }
 
-        $query = "SELECT * FROM `products` $search LIMIT :limit OFFSET :offset";
+        $query = "SELECT * FROM `products` JOIN `categories` ON `products`.`category_id` = `categories`.`category_id` $search LIMIT :limit OFFSET :offset";
 
         $stmt = $this->connection->prepare($query);
+
         if ($active !== null) {
-            $stmt->bindValue(':active', $active, PDO::PARAM_INT);
+            $stmt->bindValue(':active', $active, PDO::PARAM_BOOL);
         }
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
