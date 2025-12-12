@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center rounded-bottom p-4">
-                                    <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['name']) ?> ?></a>
+                                    <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['name']) ?> </a>
                                     <a href="#" class="d-block h4"><?= htmlspecialchars($product['title']) ?> <br> G2356</a>
 
 
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="col-7">
                                     <div class="products-mini-content p-3">
-                                        <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['name']) ?> ?></a>
+                                        <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['name']) ?> </a>
                                         <a href="#" class="d-block h4"><?= htmlspecialchars($product['title']) ?> <br> G2356</a>
 
                                         <?php if (!empty($product['sale_price'])): ?>
