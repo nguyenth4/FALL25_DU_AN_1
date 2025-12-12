@@ -53,8 +53,10 @@
                         <div class="product-item rounded wow fadeInUp" data-wow-delay="0.5s">
                             <div class="product-item-inner border rounded">
                                 <div class="product-item-inner-item">
-                                    <img src="assets/img/product-11.png" class="img-fluid w-100 rounded-top" alt="">
+                                    <img src="<?= htmlspecialchars($product['image']) ?>" class="img-fluid w-100 rounded-top" alt="<?= htmlspecialchars($product['name']) ?>">
+
                                     <div class="product-new">New</div>
+
                                     <div class="product-details">
                                         <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                     </div>
@@ -121,10 +123,13 @@
                         <div class="products-mini-item border">
                             <div class="row g-0">
                                 <div class="col-5">
-                                    <div class="products-mini-img border-end h-100">
-                                        <img src="assets/img/product-16.png" class="img-fluid w-100 h-100" alt="Image">
-                                        <div class="products-mini-icon rounded-circle bg-primary">
-                                            <a href="#"><i class="fa fa-eye fa-1x text-white"></i></a>
+                                    <div class="product-item-inner-item">
+                                        <img src="<?= htmlspecialchars($product['image']) ?>" class="img-fluid w-100 rounded-top" alt="<?= htmlspecialchars($product['name']) ?>">
+
+                                        <div class="product-new">New</div>
+
+                                        <div class="product-details">
+                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                         </div>
                                     </div>
                                 </div>
