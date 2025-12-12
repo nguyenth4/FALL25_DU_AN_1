@@ -125,24 +125,24 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.php" class="nav-item nav-link active">Trang chủ</a>
-                        <a href="shop.php" class="nav-item nav-link">Sản phẩm</a>
-                        <a href="single.php" class="nav-item nav-link">Chi tiết</a>
+                        <a href="index.php?view=shop" class="nav-item nav-link">Sản phẩm</a>
+                        <a href="index.php?view=single" class="nav-item nav-link">Chi tiết</a>
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trang</a>
                             <div class="dropdown-menu m-0">
-                                <a href="bestseller.php" class="dropdown-item">Bán chạy</a>
-                                <a href="cart.php" class="dropdown-item">Giỏ hàng</a>
-                                <a href="checkout.php" class="dropdown-item">Thanh toán</a>
-                                <a href="page-not-found.php" class="dropdown-item">404</a>
+                                <a href="index.php?view=bestseller" class="dropdown-item">Bán chạy</a>
+                                <a href="index.php?view=cart" class="dropdown-item">Giỏ hàng</a>
+                                <a href="index.php?view=checkout" class="dropdown-item">Thanh toán</a>
+                                <a href="index.php?view=404" class="dropdown-item">404</a>
                             </div>
                         </div>
 
-                        <a href="contact.php" class="nav-item nav-link me-2">Liên hệ</a>
+                        <a href="cindex.php?view=contact" class="nav-item nav-link me-2">Liên hệ</a>
                     </div>
 
                     <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mb-3 mb-lg-0">
-                        <i class="fa fa-phone-alt me-2"></i> 0123 456 789
+                        <i class="fa fa-phone-alt me-2"></i> 0813349216
                     </a>
                 </div>
             </nav>
