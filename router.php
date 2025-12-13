@@ -49,6 +49,46 @@ if ($role === "admin") {
             $shopController = new ShopController($connection);
             $shopController->index();
             break;
+        case 'cart':
+            require_once "Controllers/Client/CartController.php";
+            $cartController = new CartController($connection);
+            $cartController->index();
+            break;
+        // case 'bestseller':
+        //     require_once "Controllers/Client/BestSellerController.php";
+        //     $bestSellerController = new BestSellerController($connection);
+        //     $bestSellerController->index();
+        //     break;
+        // case 'checkout':
+        //     require_once "Controllers/Client/CheckoutController.php";
+        //     $checkoutController = new CheckoutController($connection);
+        //     $checkoutController->index();
+        //     break;
+        // case '404':
+        //     require_once "Controllers/Client/NotFoundController.php";
+        //     $notFoundController = new NotFoundController($connection);
+        //     $notFoundController->index();
+        //     break;
+        // case 'contact':
+        //     require_once "Controllers/Client/ContactController.php";
+        //     $contactController = new ContactController($connection);
+        //     $contactController->index();
+        //     break;
+        // case 'home':
+        //     require_once "Controllers/Client/HomeController.php";
+        //     $homeController = new HomeController($connection);
+        //     $homeController->index();
+        //     break;
+        // case 'single':
+        //     require_once "Controllers/Client/SingleProductController.php";
+        //     $singleProductController = new SingleProductController($connection);
+        //     $singleProductController->index();
+        //     break;
+        // case 'login':
+        //     require_once "Controllers/Client/LoginController.php";
+        //     $loginController = new LoginController($connection);
+        //     $loginController->index();
+        //     break;
 
         default:
             require_once "Controllers/Client/HomeController.php";

@@ -1,106 +1,143 @@
-<!-- Cart Page Start -->
+<!-- Trang Giỏ Hàng Start -->
 <div class="container-fluid py-5">
     <div class="container py-5">
-        <!-- Header Form Cart -->
-        <div class="d-flex align-items-center border-bottom py-3 bg-white rounded">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Hình ảnh </th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                        <th scope="col">Tổng</th>
+                    </tr>
+                </thead>
 
-            <!-- Checkbox chọn tất cả -->
-            <div class="form-check me-3 ms-2">
-                <input class="form-check-input" type="checkbox" id="selectAllHeader">
-            </div>
+                <tbody>
+                    
+                    <?php 
+                    $total=0;
+                    foreach ($cartItems as $item):
+                        // dump($item);
+                        $total += $item['quantity'] * (!empty($item['sale_price']) ? $item['sale_price'] : $item['price']);
+                    ?>
 
-            <!-- Cột Sản phẩm -->
-            <div class="d-flex align-items-center flex-grow-1 text-muted small fw-semibold">
-                <!-- khoảng trống tương ứng hình sản phẩm -->
-                <div style="width:150px;"></div>
-                <div>Sản Phẩm</div>
-            </div>
-
-            <!-- Cột Đơn Giá -->
-            <div class="text-muted small fw-semibold text-center" style="width:150px;">
-                Đơn Giá
-            </div>
-
-            <!-- Cột Số Lượng -->
-            <div class="text-muted small fw-semibold text-center" style="width:170px;">
-                Số Lượng
-            </div>
-
-            <!-- Cột Số Tiền -->
-            <div class="text-muted small fw-semibold text-center" style="width:150px;">
-                Số Tiền
-            </div>
-
-            <!-- Cột Thao Tác -->
-            <div class="text-muted small fw-semibold text-center" style="width:125px;">
-                Thao Tác
-            </div>
+                        <tr>
+                            <th scope="row">
+                                <p class="mb-0 py-4"><?= $item['title'] ?></p>
+                            </th>
+                            <td>
+                                <img src="<?= $item['image'] ?>" width="50" alt="">
+                            </td>
+                            <td>
+                                <?php if (!empty($item['sale_price'])): ?>
+                                    <del class="text-primary fs-5"><?= htmlspecialchars(number_format($item['price'], 2)) ?></del>
+                                    <span class="ms-2 text-danger fs-5"><?= htmlspecialchars(number_format($item['sale_price'], 2)) ?></span>
+                                <?php else: ?>
+                                    <span class="text-primary fs-5"><?= htmlspecialchars(number_format($item['price'], 2)) ?></span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <div class="input-group quantity py-4"  style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <button data-price="<?= (!empty($item['sale_price'])? $item['sale_price']: $item['price']) ?>" data-id="<?= $item['product_id'] ?>" class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text"
+                                        class="form-control form-control-sm text-center border-0"
+                                        value="<?= $item['quantity'] ?>">
+                                    <div class="input-group-btn">
+                                        <button data-price="<?= (!empty($item['sale_price'])? $item['sale_price']: $item['price']) ?>" data-id="<?= $item['product_id'] ?> "class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="sub-total">
+                                <p class="mb-0 py-4"><?= number_format ($item['quantity']* (!empty($item['sale_price'])? $item['sale_price']: $item['price']))  ?></p>
+                            </td>
+                            <td class="py-4">
+                                <button class="btn btn-md rounded-circle bg-light border">
+                                    <i class="fa fa-times text-danger"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
-        <!-- SHOP BLOCK -->
-        <div class="bg-white border rounded mb-4 p-3">
 
-            <div class="d-flex align-items-center border-top py-3">
+        <div class="mt-5">
+            <input type="text"
+                class="border-0 border-bottom rounded me-5 py-3 mb-4"
+                placeholder="Mã giảm giá">
+            <button class="btn btn-primary rounded-pill px-4 py-3" type="button">
+                Áp dụng mã
+            </button>
+        </div>
 
-                <div class="d-flex align-items-start flex-grow-1">
-
-                    <input type="checkbox" class="me-3 ms-2">
-
-                    <img src="assets/img/product-bestseller-1.jpg"
-                        class="rounded border me-3" width="100">
-
-                    <div>
-                        <p class="fw-bold mb-1">Lumos Eyewear – Kính Mắt Thời Trang Chống Ánh Sáng Xanh</p>
-                        <!-- Simple select -->
-                        <div class="d-flex align-items-center">
-                            <label for="phanloai" class="me-2 mb-0">Phân loại:</label>
-                            <select id="phanloai" class=""
-                                style="width: 150px;"
-                                onchange="document.getElementById('phanloai-text').textContent = 'Phân loại: ' + this.value;">
-                                <option value="Gọng đen">Gọng đen</option>
-                                <option value="Gọng trắng">Gọng trắng</option>
-
-                            </select>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <label for="size" class="me-2 mb-0">Size:</label>
-                            <select id="size" class=""
-                                style="width: 150px;"
-                                onchange="document.getElementById('size-text').textContent = 'Size: ' + this.value;">
-                                <option value="Size tiêu chuẩn">Size tiêu chuẩn</option>
-                                <option value="Size nhỏ">Size nhỏ</option>
-                            </select>
-                        </div>
-
+        <div class="row g-4 justify-content-end">
+            <div class="col-8"></div>
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                <div class="bg-light rounded">
+                    
+                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Tổng cộng</h5>
+                        <p class="mb-0 pe-4 total"><?=  number_format($total) ?></p>
                     </div>
-                </div>
-
-                <div class="text-center" style="width:150px;">
-                    <p class="fw-bold mb-0">96.800₫</p>
-                </div>
-
-                <div class="text-center" style="width:170px;">
-                    <div class="input-group " style="width: 170px;">
-                        <button class="btn-light">-</button>
-                        <input type="text" class="form-control text-center" value="1" style="border-radius:2px;">
-                        <button class="btn-light">+</button>
-                    </div>
-                </div>
-
-                <div class="text-center d-flex justify-content-center align-items-center" style="width:150px;">
-                    <p class="fw-bold mb-0 text-danger">96.800₫</p>
-                </div>
-
-                <div class="text-center d-flex justify-content-center align-items-center" style="width:120px;">
-                    <button class="btn btn-sm text-danger">Xóa</button>
+                    <button
+                        class="btn btn-primary rounded-pill px-4 py-3 text-uppercase mb-4 ms-4"
+                        type="button">
+                        Tiến hành thanh toán
+                    </button>
                 </div>
             </div>
-
-        </div>
-        <!-- TÍNH TIỀN -->
-        <div class="text-end mt-4">
-            <h4 class="fw-bold">Tổng cộng: <span class="text-danger">0₫</span></h4>
-            <a href="/checkout.php"><button class="btn btn-primary px-4 py-2 mt-2">Mua hàng</button></a>
         </div>
     </div>
 </div>
-<!-- Cart Page End -->
+<!-- Trang Giỏ Hàng End -->
+<script>
+    jQuery(document).ready(function($) {
+        
+
+        $('.btn-plus').click(function() {
+            let price = $(this).data('price');
+            let inputQty = parseInt($(this).closest('.input-group').find('input').val());
+            let subTotal= $(this).closest('tr').find('.sub-total p');
+            
+            subTotal.text(((inputQty + 1) * price).toLocaleString());
+            updateCartTotal();
+            
+
+        });
+        $('.btn-minus').click(function() {
+            let price = $(this).data('price');
+            let inputQty = $(this).closest('.input-group').find('input');
+
+            if(parseInt(inputQty.val())<=1){
+                return;
+            }
+
+            let subTotal = $(this).closest('tr').find('.sub-total p');
+            
+            subTotal.text(((iparseInt(inputQty.val())-1) * price).toLocaleString());
+            updateCartTotal();
+
+
+
+        });
+
+
+        function updateCartTotal() {
+            let total = 0;
+            $('.sub-total p').each(function() {
+                
+                total += parseFloat($(this).text().replace(/,/g, ''));
+            });
+            // Cập nhật tổng tiền vào phần tử hiển thị tổng tiền
+            $('.total').text(total.toLocaleString());
+        }
+    });
+</script>
