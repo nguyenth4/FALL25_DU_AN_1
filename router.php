@@ -6,7 +6,6 @@ if ($role === "admin") {
 
     $module = isset($_GET['module']) ? $_GET['module'] : '';
 
-
     switch ($module) {
         case 'products':
             $action = isset($_GET['action']) ? $_GET['action'] : 'index';
@@ -44,14 +43,22 @@ if ($role === "admin") {
     switch ($view) {
         case 'single-product':
             break;
-
+        case 'login':
+            require_once "Controllers/Client/AuthController.php";
+            $authController = new AuthController( $connection);
+            
+            if( $_SERVER['REQUEST_METHOD'] === 'POST'){
+                $authController->handleLogin();
+            }else{
+                $authController->login();
+            }
+            break;
         default:
             require_once "Controllers/Client/HomeController.php";
             $homeController = new HomeController($connection);
             $homeController->index();
             break;
     }
-
 }
 
 // require_once 'Models/Product.php';
@@ -83,7 +90,6 @@ if ($role === "admin") {
 // // echo "<pre>";
 // // var_dump($user);
 // // echo "</pre>";
-
 
 // require_once 'Models/Category.php';
 // $categoryModels = new Category($connection);
