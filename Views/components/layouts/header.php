@@ -16,11 +16,19 @@
 
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                
+
 
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle text-muted ms-2" data-bs-toggle="dropdown"><small>
-                        <i class="fa fa-user me-2"></i> Tài khoản</small></a>
+                    <a href="#" class="dropdown-toggle text-muted ms-2" data-bs-toggle="dropdown"><small><i
+                                class="fa fa-user me-2"></i>
+                            <?php
+                            if (isset($_SESSION['user'])) {
+                                echo "Chào, " . $_SESSION['user']['full_name'];
+                            } else {
+                                echo "My Account";
+                            }
+                            ?>
+                        </small></a>
                     <div class="dropdown-menu rounded">
                         <a href="#" class="dropdown-item">Đăng nhập</a>
                         <a href="#" class="dropdown-item">Yêu thích</a>
@@ -104,11 +112,21 @@
                 <div class="collapse navbar-collapse rounded-bottom" id="allCat">
                     <div class="navbar-nav ms-auto py-0">
                         <ul class="list-unstyled categories-bars">
-                            <li><div class="categories-bars-item"><a href="#">Kính cận</a><span>(12)</span></div></li>
-                            <li><div class="categories-bars-item"><a href="#">Kính râm</a><span>(8)</span></div></li>
-                            <li><div class="categories-bars-item"><a href="#">Kính thời trang</a><span>(15)</span></div></li>
-                            <li><div class="categories-bars-item"><a href="#">Gọng kính</a><span>(20)</span></div></li>
-                            <li><div class="categories-bars-item"><a href="#">Kính trẻ em</a><span>(5)</span></div></li>
+                            <li>
+                                <div class="categories-bars-item"><a href="#">Kính cận</a><span>(12)</span></div>
+                            </li>
+                            <li>
+                                <div class="categories-bars-item"><a href="#">Kính râm</a><span>(8)</span></div>
+                            </li>
+                            <li>
+                                <div class="categories-bars-item"><a href="#">Kính thời trang</a><span>(15)</span></div>
+                            </li>
+                            <li>
+                                <div class="categories-bars-item"><a href="#">Gọng kính</a><span>(20)</span></div>
+                            </li>
+                            <li>
+                                <div class="categories-bars-item"><a href="#">Kính trẻ em</a><span>(5)</span></div>
+                            </li>
                         </ul>
                     </div>
                 </div>

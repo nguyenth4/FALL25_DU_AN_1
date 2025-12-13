@@ -90,12 +90,16 @@ if ($role === "admin") {
         //     $singleProductController = new SingleProductController($connection);
         //     $singleProductController->index();
         //     break;
-        // case 'login':
-        //     require_once "Controllers/Client/LoginController.php";
-        //     $loginController = new LoginController($connection);
-        //     $loginController->index();
-        //     break;
+        case 'login':
+            require_once "Controllers/Client/AuthController.php";
+            $authController = new AuthController($connection);
 
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $authController->handleLogin();
+            } else {
+                $authController->login();
+            }
+            break;
         default:
             require_once "Controllers/Client/HomeController.php";
             $homeController = new HomeController($connection);
