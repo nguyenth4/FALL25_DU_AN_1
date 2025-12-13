@@ -35,11 +35,15 @@
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
+                        <?php
+                        if(!empty($productsAll)):
+                            foreach($productsAll['data'] as $product):
+                        ?>
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="product-item-inner border rounded">
                                     <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-1.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Classic">
+                                        <img src="<?= is_dir($product['image'])?$product['image'] : 'assets/img/product-bestseller-1.jpg' ?>" class="img-fluid w-100 rounded-top" alt="Kính Lumos Classic">
                                         <div class="product-new">Mới</div>
                                         <div class="product-details">
                                             <a href="#"><i class="fa fa-eye fa-1x"></i></a>
@@ -47,9 +51,14 @@
                                     </div>
                                     <div class="text-center rounded-bottom p-4">
                                         <a href="#" class="d-block mb-2">Kính Gọng Nhựa</a>
-                                        <a href="#" class="d-block h4">Lumos Classic</a>
-                                        <del class="me-2 fs-5">1.250.000₫</del>
-                                        <span class="text-primary fs-5">950.000₫</span>
+                                        <a href="#" class="d-block h4"><?= htmlspecialchars($product['title']) ?></a>
+                                        <?php if(!empty($product['sale_price'])): ?>
+                                                <del class="me-2 fs-5"><?= htmlspecialchars(number_format($product['price'])) ?></del>
+                                                <span class="text-primary fs-5"><?= htmlspecialchars(number_format($product['sale_price'])) ?></span>
+                                            <?php else: ?>
+                                                <span class="text-primary fs-5"><?= htmlspecialchars(number_format($product['price'])) ?></span>
+                                                <?php endif; ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="product-item-add border border-top-0 rounded-bottom text-center p-4 pt-0">
@@ -77,298 +86,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-2.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Premium">
-                                        <div class="product-sale">GiảmGiá</div>
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Gọng Kim Loại</a>
-                                        <a href="#" class="d-block h4">Lumos Premium</a>
-                                        <del class="me-2 fs-5">1.850.000₫</del>
-                                        <span class="text-primary fs-5">1.550.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-3.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Vintage">
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Gọng Acetate</a>
-                                        <a href="#" class="d-block h4">Lumos Vintage</a>
-                                        <del class="me-2 fs-5">1.450.000₫</del>
-                                        <span class="text-primary fs-5">1.150.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-4.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Modern">
-                                        <div class="product-new">Mới</div>
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Gọng Titanium</a>
-                                        <a href="#" class="d-block h4">Lumos Modern</a>
-                                        <del class="me-2 fs-5">2.250.000₫</del>
-                                        <span class="text-primary fs-5">1.850.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-5.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Sport">
-                                        <div class="product-sale">GiảmGiá</div>
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Thể Thao</a>
-                                        <a href="#" class="d-block h4">Lumos Sport</a>
-                                        <del class="me-2 fs-5">1.750.000₫</del>
-                                        <span class="text-primary fs-5">1.450.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-6.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Elegant">
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Thời Trang</a>
-                                        <a href="#" class="d-block h4">Lumos Elegant</a>
-                                        <del class="me-2 fs-5">1.650.000₫</del>
-                                        <span class="text-primary fs-5">1.350.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-7.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Blue Light">
-                                        <div class="product-new">Mới</div>
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Chống Ánh Sáng Xanh</a>
-                                        <a href="#" class="d-block h4">Lumos Blue Light</a>
-                                        <del class="me-2 fs-5">1.350.000₫</del>
-                                        <span class="text-primary fs-5">1.050.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="product-item rounded wow fadeInUp" data-wow-delay="0.7s">
-                                <div class="product-item-inner border rounded">
-                                    <div class="product-item-inner-item">
-                                        <img src="assets/img/product-bestseller-8.jpg" class="img-fluid w-100 rounded-top" alt="Kính Lumos Kids">
-                                        <div class="product-sale">GiảmGiá</div>
-                                        <div class="product-details">
-                                            <a href="#"><i class="fa fa-eye fa-1x"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center rounded-bottom p-4">
-                                        <a href="#" class="d-block mb-2">Kính Trẻ Em</a>
-                                        <a href="#" class="d-block h4">Lumos Kids</a>
-                                        <del class="me-2 fs-5">850.000₫</del>
-                                        <span class="text-primary fs-5">650.000₫</span>
-                                    </div>
-                                </div>
-                                <div class="product-item-add border border-top-0 rounded-bottom  text-center p-4 pt-0">
-                                    <a href="#" class="btn btn-primary border-secondary rounded-pill py-2 px-4 mb-4"><i
-                                            class="fas fa-shopping-cart me-2"></i> Thêm Vào Giỏ</a>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex">
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star text-primary"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-3"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-random"></i></span></a>
-                                            <a href="#"
-                                                class="text-primary d-flex align-items-center justify-content-center me-0"><span
-                                                    class="rounded-circle btn-sm-square border"><i
-                                                        class="fas fa-heart"></i></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        <?php
+                            endforeach;
+                            endif;
+                        ?>
                     </div>
                 </div>
                 <!-- Các tab khác (New Arrivals, Featured, Top Selling) giữ nguyên cấu trúc nhưng thay đổi nội dung tương tự -->
