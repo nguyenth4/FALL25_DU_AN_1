@@ -30,13 +30,22 @@
                             ?>
                         </small></a>
                     <div class="dropdown-menu rounded">
-                        <a href="?view=login" class="dropdown-item">Đăng nhập</a>
-                        <a href="#" class="dropdown-item">Yêu thích</a>
-                        <a href="#" class="dropdown-item">Giỏ hàng</a>
-                        <a href="#" class="dropdown-item">Thông báo</a>
-                        <a href="#" class="dropdown-item">Cài đặt</a>
-                        <a href="#" class="dropdown-item">Tài khoản của tôi</a>
-                        <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
+
+
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <a href="#" class="dropdown-item">Yêu thích</a>
+                            <a href="#" class="dropdown-item">Giỏ hàng</a>
+                            <a href="#" class="dropdown-item">Thông báo</a>
+                            <a href="#" class="dropdown-item">Cài đặt</a>
+                            <a href="#" class="dropdown-item">Tài khoản của tôi</a>
+                        <?php endif; ?>
+
+                        <?php if (!isset($_SESSION['user'])): ?>
+                            <a href="?view=login" class="dropdown-item">Đăng nhập</a>
+                            <a href="?view=register" class="dropdown-item">Đăng ký</a>
+                        <?php else: ?>
+                            <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -62,11 +71,10 @@
                     <input class="form-control border-0 rounded-pill w-100 py-3" type="text"
                         placeholder="Tìm kính bạn muốn?">
                     <select class="form-select text-dark border-0 border-start rounded-0 p-3" style="width: 200px;">
-                        <option value="All Category">Tất cả loại kính</option>
-                        <option value="">Kính cận</option>
-                        <option value="">Kính râm</option>
-                        <option value="">Kính thời trang</option>
-                        <option value="">Gọng kính</option>
+                        <option value="">Tất cả danh mục</option>
+                        <?php foreach ($categoriesAll as $category): ?>
+                            <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                     <button type="button" class="btn btn-primary rounded-pill py-3 px-5" style="border: 0;">
                         <i class="fas fa-search"></i>
@@ -158,7 +166,18 @@
 
                         <a href="cindex.php?view=contact" class="nav-item nav-link me-2">Liên hệ</a>
                     </div>
-
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tất cả sản phẩm</a>
+                    <div class="dropdown-menu m-0">
+                        <ul class="list-unstyled categories-bars">
+                            <?php foreach ($categoriesAll as $category): ?>
+                                <li>
+                                    <div class="categories-bars-item"><a href="#"><?= $category['name'] ?></a>
+                                        <span>(4)</span>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                     <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mb-3 mb-lg-0">
                         <i class="fa fa-phone-alt me-2"></i> 0813349216
                     </a>
