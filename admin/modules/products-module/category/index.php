@@ -1,66 +1,90 @@
 <button type="button" class="btn btn-outline-primary mb-3">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"
-        viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-        <path
-            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-    </svg>
-    Thêm mới
+    <a href="?role=admin&module=categories&action=create" class="text-decoration-none">
+        Thêm mới
+    </a>
 </button>
-<div class="card"></div>
-<div class="card-header">
-    Danh sách danh mục
-</div>
-<div class="card-body">
-    <div class="row">
-        <form action="">
+
+<div class="card">
+    <div class="card-header">Danh sách danh mục</div>
+
+    <div class="card-body">
+        <form method="GET" action="">
+            <input type="hidden" name="role" value="admin">
+            <input type="hidden" name="module" value="categories">
+
             <div class="col-md-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm danh mục">
+                    <input type="text" name="keyword" class="form-control"
+                        value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>" placeholder="Tìm kiếm danh mục">
                     <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                 </div>
             </div>
         </form>
     </div>
-</div>
-<div class="table-reponsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col" style="width: 70%;">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Trạng thái</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-outline-primary">Sửa</button>
-                    <button type="button" class="btn btn-outline-danger">Xóa</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="card-footer">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-</div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th style="width:60%">Tên danh mục</th>
+                    <th>Slug</th>
+                    <th>Trạng thái</th>
+                    <th class="text-end">Hành động</th>
+                </tr>
+            </thead>
+
+            <tbody class="table-group-divider">
+                <?php if (empty($categories)): ?>
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">Không có danh mục nào</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($categories as $index => $cate): ?>
+                        <tr>
+                            <td><?= ($page - 1) * $limit + $index + 1 ?></td>
+
+                            <td><?= htmlspecialchars($cate['name']) ?></td>
+                            <td><?= htmlspecialchars($cate['slug']) ?></td>
+
+                            <td>
+                                <span class="badge <?= $cate['status'] ? 'bg-success' : 'bg-secondary' ?>">
+                                    <?= $cate['status'] ? 'Hiển thị' : 'Ẩn' ?>
+                                </span>
+                            </td>
+
+                            <td class="text-end">
+                                <a href="?role=admin&module=categories&action=edit&id=<?= $cate['category_id'] ?>"
+                                    class="btn btn-outline-primary btn-sm">Sửa</a>
+
+                                <a href="?role=admin&module=categories&action=delete&id=<?= $cate['category_id'] ?>"
+                                    class="btn btn-outline-danger btn-sm" onclick="return confirm('Xóa danh mục này?')">
+                                    Xóa
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PHÂN TRANG -->
+    <?php
+    $totalPages = ceil($total / $limit);
+    ?>
+    <?php if ($totalPages > 1): ?>
+        <div class="card-footer">
+            <ul class="pagination">
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item <?= $i == $page ? 'active' : '' ?>">
+                        <a class="page-link"
+                            href="?role=admin&module=categories&page=<?= $i ?>&keyword=<?= urlencode($keyword) ?>">
+                            <?= $i ?>
+                        </a>
+                    </li>
+                <?php endfor; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
 </div>

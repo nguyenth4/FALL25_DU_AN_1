@@ -46,10 +46,10 @@ class ProductController
         $brand = $_POST['brand'] ?? '';
         $is_active = (int) $_POST['is_active'];
 
-        // 2️⃣ Tạo slug tự động từ title
+        // Tạo slug tự động từ title
         $slug = $this->generateSlug($title);
 
-        // 3️⃣ Upload ảnh
+        // Upload ảnh
         $imagePath = null;
         if (!empty($_FILES['image']['name'])) {
             $uploadDir = 'uploads/products/';
@@ -62,7 +62,7 @@ class ProductController
             move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
         }
 
-        // 4️⃣ Gửi dữ liệu sang Model
+        // Gửi dữ liệu sang Model
         $this->productModel->createProduct([
             'title' => $title,
             'price' => $price,
@@ -76,7 +76,7 @@ class ProductController
             'is_active' => $is_active
         ]);
 
-        // 5️⃣ Quay lại danh sách
+        // Quay lại danh sách
         header("Location:?role=admin&module=products");
         exit;
     }
