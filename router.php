@@ -127,13 +127,17 @@ if ($role === "admin") {
                 $authController->login();
             }
             break;
+        case 'logout':
+            unset($_SESSION['user']);
+            header("Location: /");
+        break;
+
         default:
             require_once "Controllers/Client/HomeController.php";
             $homeController = new HomeController($connection);
             $homeController->index();
             break;
     }
-
 }
 
 // require_once 'Models/Product.php';

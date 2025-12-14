@@ -36,7 +36,7 @@
                         <a href="#" class="dropdown-item">Thông báo</a>
                         <a href="#" class="dropdown-item">Cài đặt</a>
                         <a href="#" class="dropdown-item">Tài khoản của tôi</a>
-                        <a href="#" class="dropdown-item">Đăng xuất</a>
+                        <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
                     </div>
                 </div>
             </div>
