@@ -18,7 +18,7 @@ class Category
      * @return array Danh sách phân loại sản phẩm
      */
 
-    public function getAllCategories($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null)
+    public function getAllCategories($page = 1, $limit = 10, $keyword = '', $active = null, $sortDate = 'desc')
     {
         $offset = ($page - 1) * $limit;
         $where = "WHERE deleted_at IS NULL";
@@ -161,6 +161,23 @@ class Category
         $stmt->execute();
     }
 
+    /**
+     * Lấy danh mục cho CLIENT (header, menu)
+     * Chỉ lấy danh mục đang hiển thị
+     */
+    public function getCategoriesClient()
+    {
+        $sql = "SELECT category_id, name, slug
+            FROM categories
+            WHERE status = 1
+            AND deleted_at IS NULL
+            ORDER BY created_at DESC";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
 }

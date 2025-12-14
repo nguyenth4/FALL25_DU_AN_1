@@ -17,7 +17,7 @@ class CategoryController
         $limit = 10;
         $keyword = isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
 
-        $result = $this->categoryModel->getAllCategories($page, $limit, $keyword, 'desc');
+        $result = $this->categoryModel->getAllCategories($page, $limit, $keyword, 1,'desc');
 
         $categories = $result['data'];
         $total = $result['total'];

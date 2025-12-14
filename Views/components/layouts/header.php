@@ -30,22 +30,13 @@
                             ?>
                         </small></a>
                     <div class="dropdown-menu rounded">
-
-
-                        <?php if (isset($_SESSION['user'])): ?>
-                            <a href="#" class="dropdown-item">Yêu thích</a>
-                            <a href="#" class="dropdown-item">Giỏ hàng</a>
-                            <a href="#" class="dropdown-item">Thông báo</a>
-                            <a href="#" class="dropdown-item">Cài đặt</a>
-                            <a href="#" class="dropdown-item">Tài khoản của tôi</a>
-                        <?php endif; ?>
-
-                        <?php if (!isset($_SESSION['user'])): ?>
-                            <a href="?view=login" class="dropdown-item">Đăng nhập</a>
-                            <a href="?view=register" class="dropdown-item">Đăng ký</a>
-                        <?php else: ?>
-                            <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
-                        <?php endif; ?>
+                        <a href="#" class="dropdown-item">Đăng nhập</a>
+                        <a href="#" class="dropdown-item">Yêu thích</a>
+                        <a href="#" class="dropdown-item">Giỏ hàng</a>
+                        <a href="#" class="dropdown-item">Thông báo</a>
+                        <a href="#" class="dropdown-item">Cài đặt</a>
+                        <a href="#" class="dropdown-item">Tài khoản của tôi</a>
+                        <a href="#" class="dropdown-item">Đăng xuất</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +62,7 @@
                     <input class="form-control border-0 rounded-pill w-100 py-3" type="text"
                         placeholder="Tìm kính bạn muốn?">
                     <select class="form-select text-dark border-0 border-start rounded-0 p-3" style="width: 200px;">
-                        <option value="">Tất cả danh mục</option>
+                        <option value="">Danh mục</option>
                         <?php foreach ($categoriesAll as $category): ?>
                             <option value="<?= $category['category_id'] ?>"><?= $category['name'] ?></option>
                         <?php endforeach; ?>
@@ -116,25 +107,16 @@
                     data-bs-toggle="collapse" data-bs-target="#allCat">
                     <h4 class="m-0"><i class="fa fa-bars me-2"></i>Danh mục</h4>
                 </button>
-
                 <div class="collapse navbar-collapse rounded-bottom" id="allCat">
                     <div class="navbar-nav ms-auto py-0">
                         <ul class="list-unstyled categories-bars">
-                            <li>
-                                <div class="categories-bars-item"><a href="#">Kính cận</a><span>(12)</span></div>
-                            </li>
-                            <li>
-                                <div class="categories-bars-item"><a href="#">Kính râm</a><span>(8)</span></div>
-                            </li>
-                            <li>
-                                <div class="categories-bars-item"><a href="#">Kính thời trang</a><span>(15)</span></div>
-                            </li>
-                            <li>
-                                <div class="categories-bars-item"><a href="#">Gọng kính</a><span>(20)</span></div>
-                            </li>
-                            <li>
-                                <div class="categories-bars-item"><a href="#">Kính trẻ em</a><span>(5)</span></div>
-                            </li>
+                            <?php foreach ($categoriesAll as $category): ?>
+                                <li>
+                                    <div class="categories-bars-item">
+                                        <a href="#"><?= $category['name'] ?></a>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -164,19 +146,7 @@
                             </div>
                         </div>
 
-                        <a href="cindex.php?view=contact" class="nav-item nav-link me-2">Liên hệ</a>
-                    </div>
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tất cả sản phẩm</a>
-                    <div class="dropdown-menu m-0">
-                        <ul class="list-unstyled categories-bars">
-                            <?php foreach ($categoriesAll as $category): ?>
-                                <li>
-                                    <div class="categories-bars-item"><a href="#"><?= $category['name'] ?></a>
-                                        <span>(4)</span>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
+                        <a href="index.php?view=contact" class="nav-item nav-link me-2">Liên hệ</a>
                     </div>
                     <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mb-3 mb-lg-0">
                         <i class="fa fa-phone-alt me-2"></i> 0813349216

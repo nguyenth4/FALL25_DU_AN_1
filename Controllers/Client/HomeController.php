@@ -11,7 +11,8 @@ class HomeController
     }
     public function index(){
         $productsAll = $this->productModel->getAllProducts(1, 8, '', 'desc', null, 1);
-        $categoriesAll = $this->categoryModel->getAllCategories(1, 20, '', null);
+        $result = $this->categoryModel->getAllCategories(1, 100, '', 1);
+        $categoriesAll = $result['data'];
 
         require_once "Views/index.php";
     }
