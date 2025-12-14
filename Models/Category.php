@@ -18,7 +18,7 @@ class Category
      * @return array Danh sách phân loại sản phẩm
      */
 
-    public function getAllCategories($page = 1, $limit = 10, $keyword = '', $active = null, $sortDate = 'desc')
+    public function getAllCategories($page = 1, $limit = 10, $keyword = '', $sortDate = 'desc', $active = null)
     {
         $offset = ($page - 1) * $limit;
         $search = '';

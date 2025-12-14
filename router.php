@@ -39,6 +39,33 @@ if ($role === "admin") {
                     $productController->index();
             }
             break;
+        case 'categories':
+            $action = isset($_GET['action']) ? $_GET['action'] : 'index';
+            require_once "Controllers/Admin/CategoryController.php";
+            $categoryController = new CategoryController($connection);
+            switch ($action) {
+                case 'index':
+                    $categoryController->index();
+                    break;
+                case 'create':
+                    $categoryController->create();
+                    break;
+                case 'store':
+                    $categoryController->store();
+                    break;
+                case 'edit':
+                    $categoryController->edit();
+                    break;
+                case 'update':
+                    $categoryController->update();
+                    break;
+                case 'delete':
+                    $categoryController->delete();
+                    break;
+                default:
+                    $categoryController->index();
+            }
+            break;
         default:
             require_once "Controllers/Admin/DashboardController.php";
             $dashboardController = new DashboardController();
