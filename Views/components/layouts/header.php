@@ -30,13 +30,22 @@
                             ?>
                         </small></a>
                     <div class="dropdown-menu rounded">
-                        <a href="#" class="dropdown-item">Đăng nhập</a>
-                        <a href="#" class="dropdown-item">Yêu thích</a>
-                        <a href="#" class="dropdown-item">Giỏ hàng</a>
-                        <a href="#" class="dropdown-item">Thông báo</a>
-                        <a href="#" class="dropdown-item">Cài đặt</a>
-                        <a href="#" class="dropdown-item">Tài khoản của tôi</a>
-                        <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
+
+
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <a href="#" class="dropdown-item">Yêu thích</a>
+                            <a href="#" class="dropdown-item">Giỏ hàng</a>
+                            <a href="#" class="dropdown-item">Thông báo</a>
+                            <a href="#" class="dropdown-item">Cài đặt</a>
+                            <a href="#" class="dropdown-item">Tài khoản của tôi</a>
+                        <?php endif; ?>
+
+                        <?php if (!isset($_SESSION['user'])): ?>
+                            <a href="?view=login" class="dropdown-item">Đăng nhập</a>
+                            <a href="?view=register" class="dropdown-item">Đăng ký</a>
+                        <?php else: ?>
+                            <a href="?view=logout" class="dropdown-item">Đăng xuất</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -147,6 +156,18 @@
                         </div>
 
                         <a href="index.php?view=contact" class="nav-item nav-link me-2">Liên hệ</a>
+                    </div>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tất cả sản phẩm</a>
+                    <div class="dropdown-menu m-0">
+                        <ul class="list-unstyled categories-bars">
+                            <?php foreach ($categoriesAll as $category): ?>
+                                <li>
+                                    <div class="categories-bars-item"><a href="#"><?= $category['name'] ?></a>
+                                        <span>(4)</span>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                     <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mb-3 mb-lg-0">
                         <i class="fa fa-phone-alt me-2"></i> 0813349216
