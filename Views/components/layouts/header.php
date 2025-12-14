@@ -30,7 +30,7 @@
                             ?>
                         </small></a>
                     <div class="dropdown-menu rounded">
-                        <a href="#" class="dropdown-item">Đăng nhập</a>
+                        <a href="?view=login" class="dropdown-item">Đăng nhập</a>
                         <a href="#" class="dropdown-item">Yêu thích</a>
                         <a href="#" class="dropdown-item">Giỏ hàng</a>
                         <a href="#" class="dropdown-item">Thông báo</a>
