@@ -127,20 +127,10 @@ if ($role === "admin") {
                 $authController->login();
             }
             break;
-        case 'register':
-            require_once "Controllers/Client/AuthController.php";
-            $authController = new AuthController($connection);
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $authController->handleRegister();
-            } else {
-                $authController->register();
-            }
-            break;
         case 'logout':
             unset($_SESSION['user']);
             header("Location: /");
-            break;
-
+        break;
 
         default:
             require_once "Controllers/Client/HomeController.php";
