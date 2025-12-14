@@ -26,8 +26,14 @@ if ($role === "admin") {
                 case 'edit':
                     $productController->edit();
                     break;
+                case 'update':
+                    $productController->update();
+                    break;
                 case 'delete':
                     $productController->delete();
+                    break;
+                case 'update-active':
+                    $productController->updateActive();
                     break;
                 default:
                     $productController->index();

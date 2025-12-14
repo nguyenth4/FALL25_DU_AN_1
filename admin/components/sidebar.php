@@ -56,7 +56,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse first-level <?php isset($_GET['module']) && $_GET['module'] == 'products' ? 'in' : '' ?>">
                         <li class="sidebar-item">
-                            <a class="sidebar-link justify-content-between" href="#">
+                            <a class="sidebar-link justify-content-between" href="?role=admin&module=products">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>
@@ -66,7 +66,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link justify-content-between" href="#">
+                            <a class="sidebar-link justify-content-between" href="?role=admin&module=products&action=create">
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="round-16 d-flex align-items-center justify-content-center">
                                         <i class="ti ti-circle"></i>

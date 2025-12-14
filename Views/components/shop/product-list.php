@@ -55,14 +55,14 @@
                                 <div class="product-item-inner-item">
                                     <img src="<?= htmlspecialchars($product['image']) ?>" class="img-fluid w-100 rounded-top" alt="<?= htmlspecialchars($product['name']) ?>">
 
-                                    <div class="product-new">New</div>
+                                    <div class="product-new">Mới</div>
 
                                     <div class="product-details">
                                         <a href="#"><i class="fa fa-eye fa-1x"></i></a>
                                     </div>
                                 </div>
                                 <div class="text-center rounded-bottom p-4">
-                                    <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['name']) ?> </a>
+                                    <a href="#" class="d-block mb-2"><?= htmlspecialchars($product['brand']) ?> </a>
                                     <a href="#" class="d-block h4"><?= htmlspecialchars($product['title']) ?> <br> G2356</a>
 
 

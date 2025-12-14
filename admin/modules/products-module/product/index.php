@@ -1,6 +1,7 @@
 <button type="button" class="btn btn-outline-primary mb-3">
-    <a href="product-add.php"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-plus-circle" viewBox="0 0 16 16">
+    <a href="?role=admin&module=products&action=create"> <svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"
+            viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
             <path
                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
@@ -65,7 +66,8 @@
 
                             <!-- Ảnh sản phẩm -->
                             <td>
-                                <img src="uploads/glasses.jpg" alt="Kính mắt" class="img-thumbnail"
+                                <img src="<?= !empty($product['image']) ? $product['image'] : 'uploads/default.jpg' ?>"
+                                    alt="<?= htmlspecialchars($product['title']) ?>" class="img-thumbnail"
                                     style="width: 60px; height: 40px; object-fit: cover;">
                             </td>
 
@@ -82,14 +84,22 @@
                             <!-- Trạng thái -->
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" <?php echo $product['is_active'] ? 'checked' : '' ?>>
+                                    <input class="form-check-input product-active-switch" type="checkbox" role="switch"
+                                        data-id="<?= $product['product_id'] ?>" <?= $product['is_active'] ? 'checked' : '' ?>>
                                 </div>
                             </td>
 
                             <!-- Nút Sửa / Xóa -->
                             <td style="white-space:nowrap">
-                                <a href="?id=<?= $product['product_id'] ?>" class="btn btn-outline-primary">Sửa</a>
-                                <a href="?id=<?= $product['product_id'] ?>" class="btn btn-outline-danger">Xóa</a>
+                                <a href="?role=admin&module=products&action=edit&id=<?= $product['product_id'] ?>"
+                                    class="btn btn-outline-primary">Sửa</a>
+
+                                <a href="?role=admin&module=products&action=delete&id=<?= $product['product_id'] ?>"
+                                    class="btn btn-outline-danger"
+                                    onclick="return confirm('Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm này?')">
+                                    Xóa
+                                </a>
+
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -117,5 +127,32 @@
             </nav>
         </div>
     <?php endif; ?>
+    <script>
+        document.querySelectorAll('.product-active-switch').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const productId = this.dataset.id;
+                const status = this.checked ? 1 : 0;
+
+                fetch('?role=admin&module=products&action=update-active', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `id=${productId}&status=${status}`
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert('Cập nhật trạng thái thất bại');
+                            this.checked = !this.checked;
+                        }
+                    })
+                    .catch(() => {
+                        alert('Có lỗi xảy ra');
+                        this.checked = !this.checked;
+                    });
+            });
+        });
+    </script>
 
 </div>

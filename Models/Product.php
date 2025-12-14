@@ -36,7 +36,7 @@ class Product
         $offset = ($page - 1) * $limit;
         $search = '';
 
-        if (trim($keyword !== '')) {
+        if (trim($keyword) !== '') {
             $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%'";
         } else {
             $search = 'WHERE 1';
@@ -54,7 +54,7 @@ class Product
             $search .= " ORDER BY `products`.`created_at` $sortDate ";
         }
 
-        $query = "SELECT * FROM `products` JOIN `categories` ON `products`.`category_id` = `categories`.`category_id` $search LIMIT :limit OFFSET :offset";
+        $query = "SELECT * FROM `products` LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`category_id` $search LIMIT :limit OFFSET :offset";
 
         $stmt = $this->connection->prepare($query);
 
@@ -95,5 +95,73 @@ class Product
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function hardDeleteProduct($id)
+    {
+        $sql = "DELETE FROM products WHERE product_id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function updateActiveStatus($id, $status)
+    {
+        $sql = "UPDATE products 
+            SET is_active = :status, updated_at = NOW()
+            WHERE product_id = :id";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(':status', $status, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function createProduct($data)
+    {
+        $sql = "INSERT INTO products 
+        (title, price, sale_price, brand, slug, image, is_active, created_at)
+        VALUES 
+        (:title, :price, :sale_price, :brand, :slug, :image, :is_active, NOW())";
+
+        $stmt = $this->connection->prepare($sql);
+
+        $stmt->execute([
+            ':title' => $data['title'],
+            ':price' => $data['price'],
+            ':sale_price' => $data['sale_price'] ?? null,
+            ':brand' => $data['brand'],
+            ':slug' => $data['slug'],
+            ':image' => $data['image'],
+            ':is_active' => $data['is_active'],
+        ]);
+    }
+
+    public function updateProduct($data)
+    {
+        $sql = "UPDATE products SET
+        title = :title,
+        price = :price,
+        sale_price = :sale_price,
+        brand = :brand,
+        slug = :slug,
+        image = :image,
+        is_active = :is_active,
+        updated_at = NOW()
+        WHERE product_id = :id";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([
+            ':title' => $data['title'],
+            ':price' => $data['price'],
+            ':sale_price' => $data['sale_price'],
+            ':brand' => $data['brand'],
+            ':slug' => $data['slug'],
+            ':image' => $data['image'],
+            ':is_active' => $data['is_active'],
+            ':id' => $data['id'],
+        ]);
+    }
+
+
 }
 
