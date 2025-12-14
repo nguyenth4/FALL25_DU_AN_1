@@ -23,6 +23,7 @@ class ProductController
 
     public function create()
     {
+        $categories = $this->productModel->getAllCategories();
         require_once "admin/product-add.php";
     }
 
@@ -37,10 +38,11 @@ class ProductController
 
         // 1️⃣ Lấy dữ liệu từ form
         $title = trim($_POST['title']);
+        $category_id = (int) $_POST['category_id'];
         $price = (float) $_POST['price'];
-        $sale_price = !empty($_POST['sale_price'])
-            ? (float) $_POST['sale_price']
-            : null;
+        $sale_price = !empty($_POST['sale_price']) ? (float) $_POST['sale_price'] : null;
+        $short_description = $_POST['short_description'] ?? '';
+        $description = $_POST['description'] ?? '';
         $brand = $_POST['brand'] ?? '';
         $is_active = (int) $_POST['is_active'];
 
@@ -65,6 +67,9 @@ class ProductController
             'title' => $title,
             'price' => $price,
             'sale_price' => $sale_price,
+            'category_id' => $category_id,
+            'short_description' => $short_description,
+            'description' => $description,
             'brand' => $brand,
             'slug' => $slug,
             'image' => $imagePath,
@@ -85,9 +90,11 @@ class ProductController
         }
 
         $product = $this->productModel->getOneProduct($id);
+        $categories = $this->productModel->getAllCategories();
 
         require_once "admin/product-edit.php";
     }
+
 
     public function update()
     {
@@ -98,19 +105,23 @@ class ProductController
 
         $id = (int) $_POST['id'];
         $title = trim($_POST['title']);
+        $category_id = (int) $_POST['category_id'];
         $price = (float) $_POST['price'];
-        $sale_price = !empty($_POST['sale_price']) ? (float) $_POST['sale_price'] : null;
+        $sale_price = $_POST['sale_price'] !== '' ? (float) $_POST['sale_price'] : null;
+        $short_description = $_POST['short_description'] ?? '';
+        $description = $_POST['description'] ?? '';
         $brand = $_POST['brand'] ?? '';
         $is_active = (int) $_POST['is_active'];
 
         $slug = $this->generateSlug($title);
 
-        // giữ ảnh cũ
+        // Lấy sản phẩm cũ
         $product = $this->productModel->getOneProduct($id);
         $imagePath = $product['image'];
 
-        // upload ảnh mới
+        // Upload ảnh mới
         if (!empty($_FILES['image']['name'])) {
+
             if ($imagePath && file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -125,11 +136,15 @@ class ProductController
             move_uploaded_file($_FILES['image']['tmp_name'], $imagePath);
         }
 
+        // Update DB
         $this->productModel->updateProduct([
             'id' => $id,
             'title' => $title,
+            'category_id' => $category_id,
             'price' => $price,
             'sale_price' => $sale_price,
+            'short_description' => $short_description,
+            'description' => $description,
             'brand' => $brand,
             'slug' => $slug,
             'image' => $imagePath,
@@ -139,6 +154,7 @@ class ProductController
         header("Location:index.php?role=admin&module=products");
         exit;
     }
+
 
     public function delete()
     {

@@ -37,7 +37,7 @@ class Product
         $search = '';
 
         if (trim($keyword) !== '') {
-            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%'";
+            $search = "WHERE `title` LIKE '%$keyword%' OR `description` LIKE '%$keyword%' OR `short_description` LIKE '%$keyword%'";
         } else {
             $search = 'WHERE 1';
         }
@@ -118,36 +118,12 @@ class Product
 
     public function createProduct($data)
     {
-        $sql = "INSERT INTO products 
-        (title, price, sale_price, brand, slug, image, is_active, created_at)
-        VALUES 
-        (:title, :price, :sale_price, :brand, :slug, :image, :is_active, NOW())";
-
-        $stmt = $this->connection->prepare($sql);
-
-        $stmt->execute([
-            ':title' => $data['title'],
-            ':price' => $data['price'],
-            ':sale_price' => $data['sale_price'] ?? null,
-            ':brand' => $data['brand'],
-            ':slug' => $data['slug'],
-            ':image' => $data['image'],
-            ':is_active' => $data['is_active'],
-        ]);
-    }
-
-    public function updateProduct($data)
-    {
-        $sql = "UPDATE products SET
-        title = :title,
-        price = :price,
-        sale_price = :sale_price,
-        brand = :brand,
-        slug = :slug,
-        image = :image,
-        is_active = :is_active,
-        updated_at = NOW()
-        WHERE product_id = :id";
+        $sql = "INSERT INTO products
+    (title, price, sale_price, brand, slug, image, is_active,
+     category_id, short_description, description, created_at)
+    VALUES
+    (:title, :price, :sale_price, :brand, :slug, :image, :is_active,
+     :category_id, :short_description, :description, NOW())";
 
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([
@@ -158,8 +134,48 @@ class Product
             ':slug' => $data['slug'],
             ':image' => $data['image'],
             ':is_active' => $data['is_active'],
-            ':id' => $data['id'],
+            ':category_id' => $data['category_id'],
+            ':short_description' => $data['short_description'],
+            ':description' => $data['description'],
         ]);
+    }
+
+    public function updateProduct($data)
+    {
+        $sql = "UPDATE products SET
+            title = :title,
+            category_id = :category_id,
+            price = :price,
+            sale_price = :sale_price,
+            short_description = :short_description,
+            description = :description,
+            brand = :brand,
+            slug = :slug,
+            image = :image,
+            is_active = :is_active,
+            updated_at = NOW()
+        WHERE product_id = :id";
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([
+            ':id' => $data['id'],
+            ':title' => $data['title'],
+            ':category_id' => $data['category_id'],
+            ':price' => $data['price'],
+            ':sale_price' => $data['sale_price'],
+            ':short_description' => $data['short_description'],
+            ':description' => $data['description'],
+            ':brand' => $data['brand'],
+            ':slug' => $data['slug'],
+            ':image' => $data['image'],
+            ':is_active' => $data['is_active']
+        ]);
+    }
+
+    public function getAllCategories()
+    {
+        $stmt = $this->connection->query("SELECT * FROM categories ORDER BY name ASC");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

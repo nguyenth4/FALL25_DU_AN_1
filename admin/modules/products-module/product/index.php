@@ -1,7 +1,6 @@
 <button type="button" class="btn btn-outline-primary mb-3">
-    <a href="?role=admin&module=products&action=create"> <svg
-            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"
-            viewBox="0 0 16 16">
+    <a href="?role=admin&module=products&action=create"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
             <path
                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
@@ -46,64 +45,88 @@
     <?php else: ?>
         <div class="table-responsive">
             <table class="table">
-                <thead>
+                <thead class="table-light">
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Ảnh</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Giá</th>
-                        <th scope="col">Giá khuyến mãi</th>
-                        <th scope="col">Trạng thái</th>
-                        <th scope="col" class="text-end">Hành động</th>
+                        <th>ID</th>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>Danh mục</th>
+                        <th>Giá</th>
+                        <th>Giá KM</th>
+                        <th>Mô tả ngắn</th>
+                        <th>Mô tả</th>
+                        <th>Trạng thái</th>
+                        <th class="text-end">Hành động</th>
                     </tr>
                 </thead>
 
-                <tbody class="table-group-divider">
-                    <?php foreach ($productList['data'] as $product):
-                        ?>
+                <tbody>
+                    <?php foreach ($productList['data'] as $product): ?>
                         <tr>
-                            <th scope="row"><?= $product['product_id'] ?></th>
+                            <td><?= $product['product_id'] ?></td>
 
-                            <!-- Ảnh sản phẩm -->
+                            <!-- Ảnh -->
                             <td>
-                                <img src="<?= !empty($product['image']) ? $product['image'] : 'uploads/default.jpg' ?>"
-                                    alt="<?= htmlspecialchars($product['title']) ?>" class="img-thumbnail"
-                                    style="width: 60px; height: 40px; object-fit: cover;">
+                                <img src="<?= $product['image'] ?? 'uploads/default.jpg' ?>" class="img-thumbnail"
+                                    style="width:60px;height:40px;object-fit:cover">
                             </td>
 
-                            <!-- Tên sản phẩm -->
-                            <td> <?= $product['title'] ?> </td>
+                            <!-- Tên -->
+                            <td><?= htmlspecialchars($product['title']) ?></td>
+
+                            <!-- Danh mục -->
+                            <td><?= htmlspecialchars($product['name'] ?? '—') ?></td>
 
                             <!-- Giá -->
-                            <td> <?= number_format($product['price']) ?> VND</td>
+                            <td><?= number_format($product['price']) ?> VND</td>
 
-                            <!-- Giá khuyến mãi -->
-                            <td> <?= $product['sale_price'] ? number_format($product['sale_price']) . ' VND' : 'Không có khuyến mãi' ?>
+                            <!-- Giá KM -->
+                            <td>
+                                <?= $product['sale_price']
+                                    ? number_format($product['sale_price']) . ' VND'
+                                    : '<span class="text-muted">—</span>' ?>
+                            </td>
+
+                            <!-- ✅ MÔ TẢ NGẮN -->
+                            <td style="max-width:200px">
+                                <small class="text-muted">
+                                    <?= !empty($product['short_description'])
+                                        ? htmlspecialchars(mb_strimwidth($product['short_description'], 0, 80, '...'))
+                                        : '—' ?>
+                                </small>
+                            </td>
+
+                            <!-- ✅ MÔ TẢ -->
+                            <td style="max-width:260px">
+                                <small class="text-muted">
+                                    <?= !empty($product['description'])
+                                        ? htmlspecialchars(mb_strimwidth(strip_tags($product['description']), 0, 120, '...'))
+                                        : '—' ?>
+                                </small>
                             </td>
 
                             <!-- Trạng thái -->
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input product-active-switch" type="checkbox" role="switch"
+                                    <input class="form-check-input product-active-switch" type="checkbox"
                                         data-id="<?= $product['product_id'] ?>" <?= $product['is_active'] ? 'checked' : '' ?>>
                                 </div>
                             </td>
 
-                            <!-- Nút Sửa / Xóa -->
-                            <td style="white-space:nowrap">
+                            <!-- Hành động -->
+                            <td class="text-end" style="white-space:nowrap">
                                 <a href="?role=admin&module=products&action=edit&id=<?= $product['product_id'] ?>"
-                                    class="btn btn-outline-primary">Sửa</a>
+                                    class="btn btn-outline-primary btn-sm">Sửa</a>
 
                                 <a href="?role=admin&module=products&action=delete&id=<?= $product['product_id'] ?>"
-                                    class="btn btn-outline-danger"
-                                    onclick="return confirm('Bạn có chắc chắn muốn xóa vĩnh viễn sản phẩm này?')">
+                                    class="btn btn-outline-danger btn-sm" onclick="return confirm('Xóa sản phẩm này?')">
                                     Xóa
                                 </a>
-
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
+
 
             </table>
         </div>
