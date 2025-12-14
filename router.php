@@ -76,6 +76,9 @@ if ($role === "admin") {
 
     switch ($view) {
         case 'single-product':
+            require_once "Controllers/Client/ShopController.php";
+            $productController = new ShopController($connection);
+            $productController->show();
             break;
         case 'shop':
             require_once "Controllers/Client/ShopController.php";

@@ -30,30 +30,22 @@
             </div>
         </div>
         <div class="col-xl-6">
-            <h4 class="fw-bold mb-3">Smart Camera</h4>
-            <p class="mb-3">Category: Electronics</p>
-            <h5 class="fw-bold mb-3">3,35 $</h5>
-            <div class="d-flex mb-4">
-                <i class="fa fa-star text-secondary"></i>
-                <i class="fa fa-star text-secondary"></i>
-                <i class="fa fa-star text-secondary"></i>
-                <i class="fa fa-star text-secondary"></i>
-                <i class="fa fa-star"></i>
+            <h4 class="fw-bold mb-3"><?= htmlspecialchars($product['title']) ?></h4>
+            <p class="mb-3">Danh mục: <?= htmlspecialchars($product['category_name']) ?></p>
+            <h5 class="fw-bold mb-3">
+                <?php if (!empty($product['sale_price'])): ?>
+                    <del class="me-2 fs-5"><?= htmlspecialchars(number_format($product['price'])) ?></del>
+                    <span class="text-primary fs-5"><?= htmlspecialchars(number_format($product['sale_price'])) ?></span>
+                <?php else: ?>
+                    <span class="text-primary fs-5"><?= htmlspecialchars(number_format($product['price'])) ?></span>
+                <?php endif; ?>
+            </h5>
+
+            <div>
+                <p class="mb-4"><?= htmlspecialchars($product['short_description']) ?></p>
+
             </div>
-            <div class="mb-3">
-                <div class="btn btn-primary d-inline-block rounded text-white py-1 px-4 me-2"><i
-                        class="fab fa-facebook-f me-1"></i> Share</div>
-                <div class="btn btn-secondary d-inline-block rounded text-white py-1 px-4 ms-2"><i
-                        class="fab fa-twitter ms-1"></i> Share</div>
-            </div>
-            <div class="d-flex flex-column mb-3">
-                <small>Product SKU: N/A</small>
-                <small>Available: <strong class="text-primary">20 items in stock</strong></small>
-            </div>
-            <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected
-                humour, or non-characteristic words etc.</p>
-            <p class="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder;
-                chain pickerel hatchetfish, pencilfish snailfish</p>
+            <?php   ?>
             <div class="input-group quantity mb-5" style="width: 100px;">
                 <div class="input-group-btn">
                     <button class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -67,8 +59,12 @@
                     </button>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
-                    class="fa fa-shopping-bag me-2 text-white"></i> Add to cart</a>
+            <?php if (!isset($_SESSION['user'])): ?>
+                <p class="text-danger mb-4">Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!</p>
+            <?php endif; ?>
+            <button <?php !isset($_SESSION['user']) ? 'disabled= "disabled" ' : ' ' ?> href="javascript:;"
+                class="btn btn-primary border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                    class="fa fa-shopping-bag me-2 text-white"></i> Add to cart</button>
         </div>
         <div class="col-lg-12">
             <nav>
@@ -83,31 +79,7 @@
             </nav>
             <div class="tab-content mb-5">
                 <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                    <p>Our new <b class="fw-bold">HPB12 / A12 battery</b> is rated at 2000mAh and
-                        designed to power up Black and Decker / FireStorm line of 12V tools allowing
-                        users to run multiple devices off the same battery pack. The HPB12 is compatible
-                        with the following Black and Decker power tool models:
-                    </p>
-                    <b class="fw-bold">Black & Decker Drills and Drivers:</b>
-                    <p class="small">BD12PSK, BDG1200K, BDGL12K, BDID1202, CD1200SK, CD12SFK, CDC1200K,
-                        CDC120AK, CDC120ASB, CP122K, CP122KB, CP12K, CP12KB, EPC12, EPC126, EPC126BK,
-                        EPC12CA, EPC12CABK, HP122K, HP122KD, HP126F2B, HP126F2K, HP126F3B, HP126F3K,
-                        HP126FBH, HP126FSC, HP126FSH, HP126K, HP128F3B, HP12K, HP12KD, HPD1200, HPD1202,
-                        HPD1202KF, HPD12K-2, PS122K, PS122KB, PS12HAK, SS12, SX3000, SX3500, XD1200,
-                        XD1200K, XTC121
-                    </p>
-                    <b class="fw-bold">lack & Decker Impact Wrenches:</b>
-                    <p class="small">SX5000, XTC12IK, XTC12IKH</p>
-                    <b class="fw-bold">Black & Decker Multi-Tools:</b>
-                    <p class="small">KC2000FK</p>
-                    <b class="fw-bold">Black & Decker Nailers:</b>
-                    <p class="small">BDBN1202</p>
-                    <b class="fw-bold">Black & Decker Screwdrivers:</b>
-                    <p class="small">HP9019K</p>
-                    <b class="fw-bold mb-0">Best replacement for the following Black and Decker OEM
-                        battery part numbers:</b>
-                    <p class="small">HPB12, A12, A12EX, A12-XJ, A1712, B-8315, BD1204L, BD-1204L,
-                        BPT1047, FS120B, FS120BX, FSB12.</p>
+                    <?= $product['description'] ?>
                 </div>
                 <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
                     <div class="d-flex">

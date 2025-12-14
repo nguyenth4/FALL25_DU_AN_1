@@ -81,20 +81,25 @@ class Product
 
     public function getOneProduct($id, $active = null)
     {
+        $search = '';
         if ($active !== null) {
-            $search = " AND `is_active` = :active ";
-        } else {
-            $search = '';
+            $search = " AND p.is_active = :active ";
         }
-        $query = "SELECT * FROM `products` WHERE `product_id` = :id LIMIT 1";
+
+        $query = "SELECT p.*, c.`name` AS `category_name`FROM `products` p LEFT JOIN `categories` c ON p.`category_id` = c.`category_id` WHERE p.`product_id` = :id $search LIMIT 1";
+
+
         $stmt = $this->connection->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
         if ($active !== null) {
             $stmt->bindValue(':active', $active, PDO::PARAM_INT);
         }
+
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     public function hardDeleteProduct($id)
     {
@@ -180,4 +185,3 @@ class Product
 
 
 }
-
