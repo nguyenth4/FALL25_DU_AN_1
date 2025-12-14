@@ -10,8 +10,6 @@
         </div>
 
         <div class="col-lg-4 text-center d-flex align-items-center justify-content-center">
-            <small class="text-dark">Gọi ngay:</small>
-            <a href="#" class="text-muted">(+84) 0813349216</a>
         </div>
 
         <div class="col-lg-4 text-center text-lg-end">
